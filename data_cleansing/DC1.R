@@ -28,8 +28,9 @@ class(Height)
 
 # c() 는 같은 행으로 묶어 버리는 역할, 위의 Height 와 묶는다.
 Gender <- as.factor(c(rep("Male", 5000), rep("Female", 5000)))
-data <- data.frame(Height, Gender)
+data <- data.frame(Heights = Height, Genders = Gender) # 이름 지정
 dim(data)
+glimpse(data)
 
 class(data[,1])
 class(data$Height)
