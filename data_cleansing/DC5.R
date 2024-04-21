@@ -51,6 +51,7 @@ as.factor(cleanUntidy$date)
 # 위 코드에서 추가로 날짜 정보를 년,월,일 로 separate 하기
 
 # name 행은 그대로 둔다는 뜻으로 -name으로 gather 를 씀
+# -제외한 나머지 행은 row 로 변환
 untidy_data %>% 
   gather(key = "date", value = "weight", -name) %>% 
   mutate(date = str_remove(date, "wt_"), date = mdy(date)) %>% 
