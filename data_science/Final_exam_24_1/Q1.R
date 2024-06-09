@@ -62,7 +62,7 @@ View(testset)
 
 
 
-# 3. Step1 - 1  Knn 모델링 
+# 3.Knn 모델링 (step 1)
 
 
 trainset_ <- trainset[1:1000,] # 모든 데이터를 training 시 매우 오래걸림, 범위 조정 (sampling 이 필요할 수도 )
@@ -82,7 +82,12 @@ contingency_table
 
 
 # -----------------------------------------------------
-# 4. Feature Selection
+# 4. Feature Selection (step 2)
+
+
+
+
+# --------------------------------------------------
 
 
 
