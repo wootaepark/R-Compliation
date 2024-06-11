@@ -54,7 +54,20 @@ testset <- testset %>%
 View(testset)
 
 
+#----------------------------------------------------------------------
 
+
+# 3. 데이터 클렌징
+
+cleanData <- trainset[,2:14]
+rownames(cleanData) <- trainset$ID
+
+
+# 데이터 섞기 랜덤화
+randomIdx <- sample(1:nrow(cleanData)) # 하나의 값이 아닌 여러 값을 가지는 matrix 이다.
+cleanData <- cleanData[randomIdx,]
+dim(cleanData)
+View(cleanData)
 
 
 
@@ -62,27 +75,41 @@ View(testset)
 
 
 
-# 3.Knn 모델링 (step 1)
+# 4. Knn 모델링 (step 1)
 
 
-trainset_ <- trainset[1:1000,] # 모든 데이터를 training 시 매우 오래걸림, 범위 조정 (sampling 이 필요할 수도 )
 
 ## 10-fold CV
 fitControl <- trainControl(
   method = "cv",
   number = 10)
 
-knn_model <- train(Disease ~ ., data = trainset_, 
+knn_model <- train(Disease ~ ., data = cleanData, 
                    method = "knn", 
-                   trControl = fitControl)
+                   trControl = fitControl,
+                   tuneGrid = data.frame(k=3),
+                   tuneLength=10)
 
-contingency_table <- confusionMatrix(knn_model)
-contingency_table
+
+
+
+# 예측하기 (자신의 데이터를 이용)
+
+predictionResult <- predict(knn_model, newdata = cleanData)
+
+table(predictionResult, cleanData$Disease)
+
+
 
 
 
 # -----------------------------------------------------
-# 4. Feature Selection (step 2)
+# -----------------------------------------------------
+
+
+
+
+# 5. Feature Selection (step 2)
 
 
 
