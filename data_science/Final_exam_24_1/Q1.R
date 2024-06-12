@@ -421,6 +421,19 @@ dotplot(resamps, metric = "Accuracy")
 # -----------------------------------------
 # 8. 7에서 가장 잘 나온 모델과 knn k=3 모델과 비교 이후 testset 을 예측하기, (step4)
 
+#ranger
+ranger_prediction <- predict(ranger_model, newdata = testset)
+
+View(data.frame(ranger_prediction))
+
+
+
+#knn-3
+
+knn_prediction <- predict(knn_model, newdata = testset)
+
+View(data.frame(knn_prediction))
+
 
 
 
