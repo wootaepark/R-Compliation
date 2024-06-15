@@ -1,5 +1,5 @@
 ## asssignemnt 3rd
-## 2번문제
+## 3번문제
 
 setRepositories(ind = 1:7)
 
