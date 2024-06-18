@@ -84,10 +84,12 @@ Pval <- data.frame()
 for (i in 1:(ncol(cleanData)-2)){
   Pval[i,1]<-kruskal.test(cleanData[,i] ~ cleanData$Disease, )$p.value
   Pval[i,2]<-colnames(cleanData[i])
-  
+ 
   
 }
 colnames(Pval)<-c("Pvalue", "microbiome_info")
+
+
 
 
 # 2. Pvalue 가 작은 순서대로 ordering
@@ -95,17 +97,23 @@ colnames(Pval)<-c("Pvalue", "microbiome_info")
 
 Pval <- Pval[order(Pval[,1]),] # ordering 
 print(Pval)
-head(Pval, 100)
 View(Pval)
 
 
 
+# 3. Pval 에 따라 featrue 를 정렬 하고, index 정보 붙여서 출력
+cleanedPval <- cbind(head(Pval, 100),index = row.names(head(Pval,100)))
+cleanedPval$index <- as.numeric(cleanedPval$index)
+View(cleanedPval)
 
 
 
 
+# 4.새로운 데이터 프레임 생성 및 중요한 feature 만 골라서 다시 데이터 생성
 
-
+MLdata <- data.frame(cleanData[cleanedPval$index], Disease = cleanData$Disease)
+dim(MLdata)
+View(MLdata)
 
 
 
@@ -115,8 +123,41 @@ View(Pval)
 
 # Q5 ---------------------------------------------
 
-# 
 
+# 1. 10-cross validation
+
+fitControl <- trainControl(
+  method = "cv",
+  number = 10)
+
+
+# 2. knn_model 이용하기
+
+# 100개의 feature 로 knn 모델링
+
+# (1) knn 이용
+
+knn_model <- train(Disease ~ ., 
+                   data = MLdata, 
+                   method = "knn", 
+                   trControl = fitControl,
+)
+
+print(knn_model)
+
+
+
+# (2) svm 이용
+
+treebag_model <- train(Disease ~ ., 
+                    data = MLdata, 
+                    method = "treebag",  # random forest
+                    trControl = fitControl,
+)
+
+print(treebag_model)
+
+# (3) Filter 를 이용한 경우 
 
 setwd(WORK_DIR)
 save.image("Q3_Q5.Rdata")
