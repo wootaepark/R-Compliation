@@ -64,16 +64,6 @@ dim(cleanData)
 
 
 
-
-
-
-
-
-
-
-
-
-
 # Q4 ---------------------------------------------
 
 
@@ -147,17 +137,40 @@ print(knn_model)
 
 
 
-# (2) svm 이용
+
+# (2) treebag 이용
 
 treebag_model <- train(Disease ~ ., 
                     data = MLdata, 
-                    method = "treebag",  # random forest
+                    method = "treebag",  
                     trControl = fitControl,
 )
 
 print(treebag_model)
 
-# (3) Filter 를 이용한 경우 
+
+
+# (3)glmnet
+glmnet_model <- train(Disease ~ ., 
+                       data = MLdata, 
+                       method = "glmnet",  
+                       trControl = fitControl,
+)
+
+print(glmnet_model)
+
+
+# (5) C5.0
+
+
+C50_model <- train(Disease ~ ., 
+                        data = MLdata, 
+                        method = "C5.0",  
+                        trControl = fitControl,
+)
+
+print(C50_model)
+
 
 setwd(WORK_DIR)
 save.image("Q3_Q5.Rdata")
