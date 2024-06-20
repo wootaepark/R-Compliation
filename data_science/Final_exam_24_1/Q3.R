@@ -163,7 +163,8 @@ print(glmnet_model)
 # (5) C5.0
 
 
-C50_model <- train(Disease ~ ., 
+C50_model <- train(Disease ~ .,  # . 을 이용해서 꼭 모든 feature 를 모델링 할 필요 x, 
+                   # filtered method, wrappered method 등 사용 
                         data = MLdata, 
                         method = "C5.0",  
                         trControl = fitControl,
