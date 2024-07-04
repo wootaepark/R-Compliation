@@ -11,8 +11,11 @@ WORK_DIR <- "C:\\DataScience_R_Compliation\\ADsP\\rdata"
 setwd(WORK_DIR)
 
 
+# 시작 날짜 : 24년 7월 5일
 
-# 1. -----------
+
+
+# 1. ----------- 
 
 
 
