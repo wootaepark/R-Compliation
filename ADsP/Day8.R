@@ -53,6 +53,8 @@ cast(melted_score, student_number ~ variable, max)
 #install.packages("sqldf")
 library(sqldf)
 
+
+# 일반적인 sql 문을 사용할 수 있다.
 sqldf('select * from score')
 
 sqldf('select * from score where student_number = 1')
