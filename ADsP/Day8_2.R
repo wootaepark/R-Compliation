@@ -16,6 +16,7 @@ load("Day8_2.Rdata")
 
 # 6. ---- 탐색적 데이터 분석(EDA) -----
 
+# head 쪽 3개 출력 (default 값 = 6)
 head(iris,3)
 
 # 기초통계량
