@@ -68,7 +68,7 @@ iris_imp <- amelia(copy_iris, m=3, cs="Species")
 copy_iris$Sepal.Length <- iris_imp$imputations[[3]]$Sepal.Length
 
 
-# 8. ----- 이상값 판단. ------
+# 8. ----- 이상값 판단. (ESD) ------
 data<-c(3,10,13,16,11,20,17,25,43)
 boxplot(data, horizontal = T)
 
