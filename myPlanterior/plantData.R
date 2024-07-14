@@ -32,7 +32,7 @@ load("plantData.Rdata")
 
 
 
-# 데이터 api 로 가져오기 (.env 파일을 이요하기위해 wd 변경경)
+# 데이터 api 로 가져오기 (.env 파일을 이요하기위해 wd 변경)
 
 setwd(WORK_DIR)
 dotenv::load_dot_env(file=".env")
@@ -99,7 +99,7 @@ print(imgData)
 
 View(imgData)
 
-
+#write.csv(imgData, "plantImgData.csv",row.names = T)
 
 
 
