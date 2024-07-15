@@ -1,3 +1,5 @@
+# 농사로 api 를 불러와서 식물정보를 csv 파일로 변경함
+
 
 
 
@@ -28,7 +30,7 @@ setwd(DATA_DIR)
 #load("plantDetailData.Rdata")
 
 
-# 1. ---------------------------- 이미지 URL 데이터 -----------------------------
+# 1. ---------------------------- 식물 상세 정보 데이터 -----------------------------
 
 plant_detail_data <- data.frame()
 
@@ -53,7 +55,7 @@ api_key <- Sys.getenv("API_KEY")
 # 새로운 생물 코드 실행 시 여기부터 실행하기기
 
 new_response <- GET("http://api.nongsaro.go.kr/service/garden/gardenDtl"
-                , query = list(apiKey = api_key, cntntsNo=14697))
+                , query = list(apiKey = api_key, cntntsNo=12901))
 
 
 new_xml_data <- content(new_response, as = "text")
@@ -105,7 +107,7 @@ parse_item <- function(item) {
     화분직경_대_정보 = xml_text(xml_find_first(item, "flpodmtBigInfo")),
     화분직경_중_정보 = xml_text(xml_find_first(item, "flpodmtMddlInfo")),
     화분직경_소_정보 = xml_text(xml_find_first(item, "flpodmtSmallInfo")),
-    가로_대_정보 = xml_text(xml_find_first(item, "WIDTH_BIG_INFO")),
+    가로_대_정보 = xml_text(xml_find_first(item, "widthBingInfo")),
     가로_중_정보 = xml_text(xml_find_first(item, "widthMddlInfo")),
     가로_소_정보 = xml_text(xml_find_first(item, "widthSmallInfo")),
     세로_대_정보 = xml_text(xml_find_first(item, "vrticlBigInfo")),
@@ -141,7 +143,7 @@ parse_item <- function(item) {
     과일계절코드 = xml_text(xml_find_first(item, "fmldeSeasonCode")),
     과시계절코드명 = xml_text(xml_find_first(item, "fmldeSeasonCodeNm")),
     과일색코드 = xml_text(xml_find_first(item, "fmldecolrCode")),
-    과일생코드명 = xml_text(xml_find_first(item, "fmldecolrCodeNm")),
+    과일색코드명 = xml_text(xml_find_first(item, "fmldecolrCodeNm")),
     번식방법코드 = xml_text(xml_find_first(item, "prpgtmthCode")),
     번식방법코드명 = xml_text(xml_find_first(item, "prpgtmthCodeNm")),
     광요구도코드 = xml_text(xml_find_first(item, "lighttdemanddoCode")),
@@ -178,5 +180,6 @@ View(plant_detail_data)
 
 
 setwd(DATA_DIR)
+#write.csv(plant_detail_data, "plantDetailData.csv",row.names = T)
 save.image("plantDetailData.Rdata")
 
