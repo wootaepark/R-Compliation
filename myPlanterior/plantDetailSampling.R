@@ -8,6 +8,7 @@ DATA_DIR <- "C:\\DataScience_R_Compliation\\myPlanterior\\data"
 WORK_DIR <-"C:\\DataScience_R_Compliation\\myPlanterior"
 
 setwd(DATA_DIR)
+
 #load("plantDetailSampling.Rdata")
 
 #data <- read.csv('plantDetailData_copied_1.csv')
