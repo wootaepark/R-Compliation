@@ -13,9 +13,13 @@ setwd(DATA_DIR)
 
 #data <- read.csv('plantDetailData_copied_1.csv')
 #cleanedData <- read.csv('240716_plantDtldata.csv')
+airCleaningPlantData <- read.csv('airCleaningPlant.csv')
+tmpData <- read.csv('tmpData.csv')
 
-View(data)
+#View(data)
 View(cleanedData)
+View(airCleaningPlantData)
+View(tmpData)
 
 # 잎색깔, 꽃색깔, 열매 색깔의 경우 다른 기준이 필요할 것 같음 .... 생각해보기
 
@@ -699,11 +703,13 @@ cleanedData <- cleanedData %>%
     
     
   )
+
+# ----- ------
+
+
 # --- 데이터 저장 코드 -----
 
 
-# 앞으로 추가될 수 있는 코드 
-# 1) 해당 실내 식물이 공기 정화 기능이 있는지 없는지 보여주는 속성
 
 
 
