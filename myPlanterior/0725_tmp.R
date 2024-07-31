@@ -1,3 +1,6 @@
+# 식물 추천 알고리즘 (로직) 구현 , 전버전 보다 정확도 up 
+
+
 setRepositories(ind = 1:8)
 DATA_DIR <- "C:\\DataScience_R_Compliation\\myPlanterior\\data"
 WORK_DIR <- "C:\\DataScience_R_Compliation\\myPlanterior"
