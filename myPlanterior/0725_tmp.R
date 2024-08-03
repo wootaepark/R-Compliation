@@ -65,7 +65,7 @@ cleanedData <- cleanedData %>%
 #
 #
 #
-# # 2-4 : 요구 광도 수치화
+# # 2-4 : 요구 광도 수치화 ##
 mapping <- c("낮은 광도(300~800 Lux)"=10, "중간 광도(800~1,500 Lux)"=20,
              "높은 광도(1,500~10,000 Lux)"= 30)
 cleanedData <- cleanedData %>%
