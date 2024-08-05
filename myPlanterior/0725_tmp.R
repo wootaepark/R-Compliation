@@ -21,6 +21,7 @@ library(factoextra)
 # ---- 1. 데이터 입력 -----
 
 originData <- read.csv('0728_cleanData.csv')
+
 View(originData)
 
 cleanedData <- data.frame(
